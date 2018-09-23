@@ -1,0 +1,38 @@
+apply plugin: 'org.sonarqube'
+apply plugin: 'jacoco'
+
+ext {
+    jacocoUnitTestExecutionData = "$buildDir/jacoco/test.exec"
+    jacocoIntegrationTestExecutionData = "$buildDir/jacoco/integrationTest.exec"
+    doCoverage = project.hasProperty 'cov'
+}
+
+test {
+    jacoco {
+        enabled = doCoverage
+    }
+}
+
+
+ext {
+    projectVersion = project.version
+    projectKey = "$project.group:$project.archivesBaseName"
+    hostUrl = 'https://sonarqube.allstate.com'
+    sonarUsername = System.env.SQ_USERNAME
+    sonarPassword = System.env.SQ_PASSWORD
+}
+
+sonarqube {
+    properties {
+        property 'sonar.projectName', 'Platform Request Bot'
+        property 'sonar.projectDescription', 'Arity Platform Request Bot'
+        property 'sonar.projectVersion', projectVersion
+        property 'sonar.projectKey', projectKey
+        property 'sonar.login', sonarUsername
+        property 'sonar.password', sonarPassword
+        property 'sonar.host.url', hostUrl
+        property 'sonar.jacoco.itReportPath', jacocoUnitTestExecutionData
+        property 'sonar.tests', 'src/test/java'
+        property 'sonar.exclusions', '**/App.java,**/*Dto.java,**/*Entity.java,**/*Config.java,**/SwaggerController.java'
+    }
+}

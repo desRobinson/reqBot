@@ -1,0 +1,16 @@
+task integrationTest(type: Test) {
+    includes += ["**/integration/**"]
+
+    testLogging {
+        events = ['passed', 'failed']
+    }
+
+    reports {
+        junitXml {
+            destination = file("$testResultsDir/com.arity.platform.tasks.integration")
+        }
+        html {
+            destination = file("$testReportDir/com.arity.platform.tasks.integration")
+        }
+    }
+}

@@ -1,0 +1,24 @@
+apply plugin: 'maven-publish'
+
+publishing {
+    publications {
+        requestbot(MavenPublication) {
+            from components.java
+            artifactId archivesBaseName
+        }
+    }
+
+    repositories {
+        maven {
+            name 'artifactory'
+            url 'https://artifactory.allstate.com/artifactory/libs-release-local'
+
+            credentials {
+                username = System.env.ARTIFACTORY_USERNAME
+                password = System.env.ARTIFACTORY_PASSWORD
+            }
+        }
+    }
+}
+
+publish.dependsOn build

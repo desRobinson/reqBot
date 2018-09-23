@@ -1,0 +1,17 @@
+test {
+    exclude "**/integration/**"
+    include 'com/arity/platform/tasks/**'
+
+    testLogging {
+        events = ['passed', 'failed']
+    }
+
+    reports {
+        junitXml {
+            destination = file("$testResultsDir/unit")
+        }
+        html {
+            destination = file("$testReportDir/unit")
+        }
+    }
+}

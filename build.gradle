@@ -1,0 +1,50 @@
+buildscript {
+	ext {
+		springBootVersion = '1.5.10.RELEASE'
+	}
+	repositories {
+		mavenCentral()
+		mavenLocal()
+	}
+	dependencies {
+		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+		classpath("org.codehaus.sonar:sonar-plugin-api:5.1")
+		classpath("org.sonarsource.scanner.gradle:sonarqube-gradle-plugin:2.5")
+	}
+}
+
+apply plugin: 'java'
+apply plugin: 'org.springframework.boot'
+
+group = 'com.arity.platform'
+archivesBaseName = 'platform-request-bot'
+version = '1.0'
+
+if (System.env.BUILD_NUMBER) {
+	version = "${version}-${System.env.BUILD_NUMBER}"
+}
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+repositories {
+	mavenCentral()
+	mavenLocal()
+}
+
+dependencies {
+	compile 'org.springframework.boot:spring-boot-starter-actuator'
+	compile 'org.springframework.boot:spring-boot-starter-mail'
+	compile ('org.springframework.boot:spring-boot-starter-web')
+
+	compileOnly 'org.projectlombok:lombok'
+
+	testCompile 'org.springframework.boot:spring-boot-starter-test'
+	testCompile ('org.mock-server:mockserver-netty:+')
+	testCompileOnly 'org.projectlombok:lombok'
+}
+
+apply from: "$projectDir/gradle/test.gradle"
+apply from: "$projectDir/gradle/distribution.gradle"
+apply from: "$projectDir/gradle/codeQuality.gradle"
+apply from: "$projectDir/gradle/integrationTest.gradle"

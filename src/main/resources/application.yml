@@ -1,0 +1,20 @@
+#server.port: 8080
+
+---
+spring:
+  profiles: test
+
+downstream:
+  server:
+    url: http://localhost:8089/service/%s/call
+    apitoken: 123456789123456789
+    projectid: 20202020
+
+platform.request:
+  apitoken: someToken
+  channel: testchannel
+  path:
+    info: http://localhost:8089/api/channels.info
+    history: http://localhost:8089/api/channels.history
+    mark: http://localhost:8089/api/channels.mark
+    internal: http://localhost:8089/stories
