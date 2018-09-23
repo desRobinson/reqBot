@@ -7,10 +7,10 @@ task integrationTest(type: Test) {
 
     reports {
         junitXml {
-            destination = file("$testResultsDir/com.arity.platform.tasks.integration")
+            destination = file("$testResultsDir/io.quell.platform.tasks.integration")
         }
         html {
-            destination = file("$testReportDir/com.arity.platform.tasks.integration")
+            destination = file("$testReportDir/io.quell.platform.tasks.integration")
         }
     }
 }

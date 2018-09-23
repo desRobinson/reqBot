@@ -25,7 +25,7 @@ ext {
 sonarqube {
     properties {
         property 'sonar.projectName', 'Platform Request Bot'
-        property 'sonar.projectDescription', 'Arity Platform Request Bot'
+        property 'sonar.projectDescription', 'Quell Platform Request Bot'
         property 'sonar.projectVersion', projectVersion
         property 'sonar.projectKey', projectKey
         property 'sonar.login', sonarUsername

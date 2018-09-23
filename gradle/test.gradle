@@ -1,6 +1,6 @@
 test {
     exclude "**/integration/**"
-    include 'com/arity/platform/tasks/**'
+    include 'io/quell/platform/tasks/**'
 
     testLogging {
         events = ['passed', 'failed']

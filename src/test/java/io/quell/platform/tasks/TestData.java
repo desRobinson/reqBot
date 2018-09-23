@@ -100,7 +100,7 @@ public class TestData {
                 "\"is_general\":false," +
                 "\"unlinked\":0," +
                 "\"creator\":\"U89G8PC72\"," +
-                "\"name_normalized\":\"arity-platformrequest\"," +
+                "\"name_normalized\":\"quell-platformrequest\"," +
                 "\"is_shared\":false," +
                 "\"is_org_shared\":false," +
                 "\"is_member\":true," +

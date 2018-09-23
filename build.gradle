@@ -16,7 +16,7 @@ buildscript {
 apply plugin: 'java'
 apply plugin: 'org.springframework.boot'
 
-group = 'com.arity.platform'
+group = 'io.quell.platform'
 archivesBaseName = 'platform-request-bot'
 version = '1.0'
 
